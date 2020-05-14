@@ -8,9 +8,25 @@ import { fetchAllWebContent } from '../actions/allWebContentActions';
 import '../App.scss';
 
 export class home extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            active: false,
+        };
+    }
+    toggleClass = () => {
+        const currentState = this.state.active;
+        this.setState({ active: !currentState });
+    };
+
     componentDidMount(){
         this.props.dispatch(fetchAllWebContent());
     }
+
+    handleClick = () => {
+        console.log('this is:', this);
+    }
+
     render() {
         const { error, loading, items } = this.props;
         
@@ -61,13 +77,13 @@ export class home extends Component {
         
         return (
             <div className="row">
-                <div class="topnav" id="myTopnav">
-                <img className="logo" src={require('../img/Sea-Undergraduate-Logo.png')}></img>
+                <div className={this.state.active ? 'topnav responsive': 'topnav'} >
+                <img className={this.state.active ? 'hideLogo': 'logo'} src={require('../img/Sea-Undergraduate-Logo.png')}></img>
                 <a href="#faqsec">FAQ</a>
                 <a href="#applyhere">Apply Here</a>
                 <a href="#program">Program</a>
                 <a href="#home">Home</a>
-                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <a href="javascript:void(0);" class="icon" onClick={this.toggleClass}>
                     <p style={{margin:"0px"}}>=</p>
                 </a>
                 </div>
