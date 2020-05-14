@@ -83,7 +83,7 @@ export class home extends Component {
                 <a href="#applyhere">Apply Here</a>
                 <a href="#program">Program</a>
                 <a href="#home">Home</a>
-                <a href="javascript:void(0);" class="icon" onClick={this.toggleClass}>
+                <a href="#" className="icon" onClick={this.toggleClass}>
                     <p style={{margin:"0px"}}>=</p>
                 </a>
                 </div>
